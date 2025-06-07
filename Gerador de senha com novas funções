@@ -1,0 +1,34 @@
+import random
+import string
+
+def gerador_de_senha():
+    while True:
+        escolha = input('Você que gerar uma senha ? (S/N): ').lower()
+
+        if escolha == 's':
+            tamanho = int(input('Digite o tamanho da senha: '))
+            Usar_minuscula = input('Incluir letras minuscula? (S/N): ').lower() == "s"
+
+            Usar_numero = input('Incluir numeros? (S/N): ').lower() == 's'
+            usar_simbolos = input('Incluir símbolos? (S/N)').lower() == 's'
+
+            caracteres = string.ascii_lowercase
+
+            if Usar_minuscula:
+                caracteres += string.ascii_uppercase
+            if Usar_numero:
+                caracteres += string.digits
+            if usar_simbolos:
+                caracteres += string.punctuation
+            
+            senha = ''.join(random.choice(caracteres) for _ in range(tamanho))
+            print(f'Senha gerada: {senha}')
+            break
+
+        elif escolha == 'n':
+            print('Programa encerrado.')
+            exit()
+        else:
+            print('Opção invalida. Digita S ou N.')
+
+gerador_de_senha()    
